@@ -10,6 +10,7 @@ default_job_info_dict_after_initial_sp_screening = \
 'valid_conformer_hash_ids': None,  # tuples of conformer (identified by its hash id) that are considered valid, used to select from all conformers
 'project_folder_path': None,  # absolute path where the project info is saved, str
 'calc_solvation_sp_correction': None,  # bool
+'comment': None,  # reserved for additional info
 
 'level_of_theory': {
                     'initial_screening_sp': None,  # initial sp energy used to screen conformers, hartree, float
@@ -39,54 +40,56 @@ default_job_info_dict_after_initial_sp_screening = \
                         },
             },
 
-'conformers':   {
-                1: {
-                    'rotor_dimension': None,  #  number of dihedrals modified
-                    'dihedral': None,  #  ((atom indices for dihedral X), float of dihedral angle X)
-                                       #  ( ((1, 2, 3, 4), 45.0), ((7, 8, 9, 10), 120.0) ) for 2d dihedral changes
-                    'hash_id': None,  # globally unique 128-bit id
-                    'is_colliding': None, # bool
-                    'is_crashing': None, # bool
-                    'is_isomorphic': None, # bool
-                    'is_valid_ts': None,  # bool
-                    'frequencies': None,  # tuple
-                    'negative_frequencies': None,  # tuple
+'conformers': dict()
+}
 
 
-                    'energy':   {
-                                'initial_screening_sp': None,
-                                'end_of_opt': None,
-                                'sp_after_opt': None,
-                                'solv_sp_gas': None,
-                                'solv_sp_liq': None,
-                                'solv_correction': None,
-                                'sp_include_solv_correction': None,
-                                },
+default_conformer_info_dict_after_initial_sp_screening = \
+{
+'rotor_dimension': None,  #  number of dihedrals modified
+'dihedral': None,  #  ((atom indices for dihedral X), float of dihedral angle X)
+                   #  ( ((1, 2, 3, 4), 45.0), ((7, 8, 9, 10), 120.0) ) for 2d dihedral changes
+'hash_id': None,  # globally unique 128-bit id
+'is_colliding': None, # bool
+'is_crashing': None, # bool
+'is_isomorphic': None, # bool
+'is_valid_ts': None,  # bool
+'frequencies': None,  # tuple
+'negative_frequencies': None,  # tuple
 
-                    'file_path': {
-                                    'input': {
-                                                'initial_screening_sp': None,
-                                                'end_of_opt': None,
-                                                'sp_after_opt': None,
-                                                'solv_sp_gas': None,
-                                                'solv_sp_liq': None,
-                                                'solv_correction': None,
-                                                'sp_include_solv_correction': None,
-                                            },
 
-                                    'output':   {
-                                                'initial_screening_sp': None,
-                                                'end_of_opt': None,
-                                                'sp_after_opt': None,
-                                                'solv_sp_gas': None,
-                                                'solv_sp_liq': None,
-                                                'solv_correction': None,
-                                                'sp_include_solv_correction': None,
-                                                },
+'energy':   {
+            'initial_screening_sp': None,
+            'end_of_opt': None,
+            'sp_after_opt': None,
+            'solv_sp_gas': None,
+            'solv_sp_liq': None,
+            'solv_correction': None,
+            'sp_include_solv_correction': None,
+            },
 
-                                },
-                    },
-                },
+'file_path': {
+                'input': {
+                            'initial_screening_sp': None,
+                            'end_of_opt': None,
+                            'sp_after_opt': None,
+                            'solv_sp_gas': None,
+                            'solv_sp_liq': None,
+                            'solv_correction': None,
+                            'sp_include_solv_correction': None,
+                        },
+
+                'output':   {
+                            'initial_screening_sp': None,
+                            'end_of_opt': None,
+                            'sp_after_opt': None,
+                            'solv_sp_gas': None,
+                            'solv_sp_liq': None,
+                            'solv_correction': None,
+                            'sp_include_solv_correction': None,
+                            },
+
+            },
 }
 
 
@@ -99,6 +102,8 @@ default_job_info_dict_for_initial_sp_screening = \
 'project_folder_path': None,  # absolute path where the project info is saved, str
 'calc_solvation_sp_correction': None,  # bool
 'initial_screening_sp_level_of_theory': None,
+'dihedrals_considered_in_this_file': None,  # tuple of dihedrals considered in this file, useful for splitting files for parallelization
+'comment': None,  # reserved for additional info
 
 'species': {
             'name': None,  # species name, str
@@ -119,17 +124,20 @@ default_job_info_dict_for_initial_sp_screening = \
                         },
             },
 
-'conformers':   {
-                1: {
-                    'rotor_dimension': None,  #  number of dihedrals modified
-                    'dihedral': None,  #  ((atom indices for dihedral X), float of dihedral angle X)
-                                       #  ( ((1, 2, 3, 4), 45.0), ((7, 8, 9, 10), 120.0) ) for 2d dihedral changes
-                    'hash_id': None,  # globally unique 128-bit id
-                    'is_colliding': None, # bool
-                    'is_crashing': None, # bool
-                    'is_isomorphic': None, # bool
-                    'is_valid_ts': None,  # bool
-                    'initial_screening_sp_energy': None,
-                    },
-                },
+'conformers': dict()
+}
+
+
+default_conformer_info_dict_for_initial_sp_screening = \
+{
+'rotor_dimension': None,  #  number of dihedrals modified
+'dihedral': None,  #  ((atom indices for dihedral X), float of dihedral angle X)
+                   #  ( ((1, 2, 3, 4), 45.0), ((7, 8, 9, 10), 120.0) ) for 2d dihedral changes
+'xyz_coords': None,  #  xyz in list of list format
+'hash_id': None,  # globally unique 128-bit id
+'is_colliding': None, # bool
+'is_crashing': None, # bool
+'is_isomorphic': None, # bool
+'is_valid_ts': None,  # bool
+'initial_screening_sp_energy': None,
 }
